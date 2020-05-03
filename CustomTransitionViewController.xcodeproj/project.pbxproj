@@ -55,6 +55,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		86722EB3245EAD40002D0A86 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				86C26D9E245A03B300D554C0 /* ParentViewController.swift */,
+				86C26DA0245A046000D554C0 /* ChildViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		86722EB4245EAD69002D0A86 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				86BF51DB245D8D640004AA46 /* DismissAnimation.swift */,
+				86BF51D9245D86600004AA46 /* PresentAnimation.swift */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
+		86722EB5245EADA8002D0A86 /* PresentationControllers */ = {
+			isa = PBXGroup;
+			children = (
+				86C26DA2245A059F00D554C0 /* PresentationController.swift */,
+				86BF51D7245D6B3C0004AA46 /* DimmPresentationViewController.swift */,
+			);
+			path = PresentationControllers;
+			sourceTree = "<group>";
+		};
 		86C26D7C2455D61C00D554C0 = {
 			isa = PBXGroup;
 			children = (
@@ -77,15 +104,12 @@
 				86C26D882455D61C00D554C0 /* AppDelegate.swift */,
 				86C26D8A2455D61C00D554C0 /* SceneDelegate.swift */,
 				86C26D8C2455D61C00D554C0 /* ContentView.swift */,
-				86C26D9E245A03B300D554C0 /* ParentViewController.swift */,
-				86C26DA0245A046000D554C0 /* ChildViewController.swift */,
-				86C26DA2245A059F00D554C0 /* PresentationController.swift */,
-				86BF51D7245D6B3C0004AA46 /* DimmPresentationViewController.swift */,
+				86722EB3245EAD40002D0A86 /* ViewControllers */,
+				86722EB5245EADA8002D0A86 /* PresentationControllers */,
 				86C26D9C2459FF0D00D554C0 /* PanelTransition.swift */,
 				86BF51DD245D96080004AA46 /* TransitionDriver.swift */,
 				86BF51DF245E0B380004AA46 /* Extensions.swift */,
-				86BF51DB245D8D640004AA46 /* DismissAnimation.swift */,
-				86BF51D9245D86600004AA46 /* PresentAnimation.swift */,
+				86722EB4245EAD69002D0A86 /* Animations */,
 				86C26D8E2455D62100D554C0 /* Assets.xcassets */,
 				86C26D932455D62100D554C0 /* LaunchScreen.storyboard */,
 				86C26D962455D62100D554C0 /* Info.plist */,
