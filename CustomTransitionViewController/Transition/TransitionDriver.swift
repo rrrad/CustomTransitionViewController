@@ -32,7 +32,7 @@ class TransitionDriver: UIPercentDrivenInteractiveTransition {
         
         // для интерактивного открытия
         screenEdgePanRecognizer = UIScreenEdgePanGestureRecognizer.init(target: self, action: #selector(handle(recognizer:)))
-        screenEdgePanRecognizer?.edges = .bottom
+        screenEdgePanRecognizer?.edges = .right // здесь свайп который управляет показом view
         presentingController.view.addGestureRecognizer(screenEdgePanRecognizer!)
 
     }
@@ -121,7 +121,7 @@ extension TransitionDriver {
        }
     
     var maxTranslation: CGFloat {
-        return presentedController?.view.frame.height ?? 0
+        return presentedController?.view.frame.width ?? 0 // 1.  здесь переключение вертикальной или горизонтальной
     }
     
 }
@@ -130,7 +130,7 @@ private extension UIPanGestureRecognizer {
     //MARK: - методы относящиеся к взаимодействию во время закрытия
     
     func incrementToBottom(maxTranslation: CGFloat) -> CGFloat {
-        let translation = self.translation(in: view).y
+        let translation = self.translation(in: view).x   // 2.   здесь переключение вертикальной или горизонтальной
         setTranslation(.zero, in: nil)
         
         let percentIncrement = translation / maxTranslation
@@ -139,7 +139,7 @@ private extension UIPanGestureRecognizer {
     
     func isProjectToDownHalf(maxTranslation: CGFloat) -> Bool {
         let endLocation = projectedLocation(decelerationRate: .fast)
-        let isPresentationCompleted = endLocation.y > maxTranslation / 2
+        let isPresentationCompleted = endLocation.x > maxTranslation / 2 // 3.   здесь переключение вертикальной или горизонтальной
         
         return isPresentationCompleted
     }

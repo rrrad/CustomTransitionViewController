@@ -15,7 +15,7 @@ class DismissAnimation: NSObject {
            let from = transitionContext.view(forKey: .from)!
            let initialFrame = transitionContext.finalFrame(for: transitionContext.viewController(forKey: .from)!)
            let animator = UIViewPropertyAnimator.init(duration: duration, curve: .easeOut) {
-               from.frame = initialFrame.offsetBy(dx: 0, dy: initialFrame.height)
+            from.frame = initialFrame.offsetBy(dx: initialFrame.width, dy: 0)
            }
            animator.addCompletion { (position) in
                transitionContext.completeTransition(!transitionContext.transitionWasCancelled)

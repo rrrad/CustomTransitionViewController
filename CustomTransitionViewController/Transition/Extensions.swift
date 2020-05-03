@@ -10,7 +10,7 @@ import UIKit
 
 
 extension UIPanGestureRecognizer {
-   //MARK: - методы относящиеся к взаимодействию во время закрытия
+   //MARK: - методы относящиеся к взаимодействию во время закрытия и открытия
 
     func projectedLocation(decelerationRate: UIScrollView.DecelerationRate) -> CGPoint {
         let velosityOffset = velocity(in: view).projectionOffset(decelerationRate: .normal)
@@ -21,7 +21,7 @@ extension UIPanGestureRecognizer {
 }
 
 extension CGPoint {
-    //MARK: - методы относящиеся к взаимодействию во время закрытия
+    //MARK: - методы относящиеся к взаимодействию во время закрытия и открытия
 
     func projectionOffset(decelerationRate: UIScrollView.DecelerationRate) -> CGPoint{
         return CGPoint.init(x: x.projectedOffset(decelerationRate: decelerationRate),
@@ -35,7 +35,7 @@ extension CGPoint {
 }
 
 extension CGFloat {
-    //MARK: - методы относящиеся к взаимодействию во время закрытия
+    //MARK: - методы относящиеся к взаимодействию во время закрытия и открытия
 
     func projectedOffset(decelerationRate: UIScrollView.DecelerationRate) -> CGFloat {
         let multiplier = 1 / (1 - decelerationRate.rawValue) / 1000
