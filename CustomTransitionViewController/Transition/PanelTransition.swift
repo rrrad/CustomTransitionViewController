@@ -10,11 +10,13 @@ import UIKit
 
 class PanelTransition: NSObject, UIViewControllerTransitioningDelegate {
     
+    init(presented: UIViewController, presenting: UIViewController) {
+         driver.linkPresentationGesture(to: presented, presentingController: presenting) // подключение жестов
+    }
+    
     private let driver = TransitionDriver() // подключение класса ответственного за интерактивное взаимодествие
     
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        
-        driver.link(to: presented) // подключение класса ответственного за интерактивное взаимодествие
         
         let presentationController = DimmPresentationViewController(presentedViewController: presented, presenting: presenting ?? source)
         presentationController.driver = driver // подключение класса ответственного за интерактивное взаимодествие

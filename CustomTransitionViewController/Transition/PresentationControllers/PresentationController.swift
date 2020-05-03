@@ -27,7 +27,7 @@ class PresentationController: UIPresentationController {
         super.containerViewDidLayoutSubviews()
         presentedView?.frame = frameOfPresentedViewInContainerView
     }
-    //MARK: - методы относящиеся к взаимодействию во время закрытия
+    //MARK: - методы относящиеся к взаимодействию во время закрытия и открытия
     
     var driver: TransitionDriver!
     override func presentationTransitionDidEnd(_ completed: Bool) {
@@ -35,6 +35,14 @@ class PresentationController: UIPresentationController {
         
         if completed {
             driver.direction = .dismiss
+        }
+    }
+    
+    override func dismissalTransitionDidEnd(_ completed: Bool) {
+        super.dismissalTransitionDidEnd(completed)
+        
+        if completed {
+            driver.direction = .present
         }
     }
 }

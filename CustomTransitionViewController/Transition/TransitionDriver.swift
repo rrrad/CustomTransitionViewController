@@ -15,15 +15,25 @@ enum TransitionDirection {
 
 class TransitionDriver: UIPercentDrivenInteractiveTransition {
  
-    //MARK: - методы относящиеся к взаимодействию во время закрытия
+    //MARK: - методы относящиеся к взаимодействию для открытия или закрытия контроллеров
     
-    private var presentedController: UIViewController?
+    private var presentingController: UIViewController? // контроллер для открытия
+    private var presentedController: UIViewController? // контроллер для закрытия
     private var panRecognizer: UIPanGestureRecognizer?
+    private var screenEdgePanRecognizer: UIScreenEdgePanGestureRecognizer?
     
-    func link(to controller: UIViewController) {
-        presentedController = controller
+    func linkPresentationGesture(to controller: UIViewController, presentingController: UIViewController) {
+        self.presentedController = controller
+        self.presentingController = presentingController
+        
+        // для интрерактивного закрытия
         panRecognizer = UIPanGestureRecognizer.init(target: self, action: #selector(handle(recognizer:)))
         presentedController?.view.addGestureRecognizer(panRecognizer!)
+        
+        // для интерактивного открытия
+        screenEdgePanRecognizer = UIScreenEdgePanGestureRecognizer.init(target: self, action: #selector(handle(recognizer:)))
+        screenEdgePanRecognizer?.edges = .bottom
+        presentingController.view.addGestureRecognizer(screenEdgePanRecognizer!)
 
     }
     
@@ -31,7 +41,8 @@ class TransitionDriver: UIPercentDrivenInteractiveTransition {
         get {
             switch direction {
             case .present:
-                return false
+                let gestureIsActive = screenEdgePanRecognizer?.state == .began
+                return gestureIsActive
             case .dismiss:
                 let gestureIsActive = panRecognizer?.state == .began
                 return gestureIsActive
@@ -54,7 +65,7 @@ class TransitionDriver: UIPercentDrivenInteractiveTransition {
 }
 extension TransitionDriver {
     
-    //MARK: - методы относящиеся к взаимодействию во время закрытия
+    //MARK: - методы относящиеся к взаимодействию во время закрытия или открытия
 
     private func handleDismiss(recognizer r: UIPanGestureRecognizer) {
         switch r.state {
@@ -83,20 +94,24 @@ extension TransitionDriver {
     }
     
     private func handlePresentation(recognizer r: UIPanGestureRecognizer) {
-           switch r.state {
-           case .began:
-               pause()
-
-           case .changed:
-               let increment = -r.incrementToBottom(maxTranslation: maxTranslation)
-               update(percentComplete + increment)
-               
-           case .ended, .cancelled:
-               if r.isProjectToDownHalf(maxTranslation: maxTranslation) {
-                   cancel()
-               } else {
-                   finish()
-               }
+        switch r.state {
+        case .began:
+            pause()
+            
+            if percentComplete == 0 {
+                presentingController?.present(presentedController!, animated: true)
+            }
+            
+        case .changed:
+            let increment = -r.incrementToBottom(maxTranslation: maxTranslation)
+            update(percentComplete + increment)
+            
+        case .ended, .cancelled:
+            if r.isProjectToDownHalf(maxTranslation: maxTranslation) {
+                cancel()
+            } else {
+                finish()
+            }
 
            case .failed:
                cancel()

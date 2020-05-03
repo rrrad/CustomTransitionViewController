@@ -12,7 +12,6 @@ import UIKit
 extension UIPanGestureRecognizer {
    //MARK: - методы относящиеся к взаимодействию во время закрытия
 
-    
     func projectedLocation(decelerationRate: UIScrollView.DecelerationRate) -> CGPoint {
         let velosityOffset = velocity(in: view).projectionOffset(decelerationRate: .normal)
         let projectedLocation = location(in: view!) + velosityOffset

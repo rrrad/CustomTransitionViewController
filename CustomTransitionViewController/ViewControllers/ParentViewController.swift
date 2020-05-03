@@ -17,21 +17,29 @@ class ParentViewController: UIViewController {
         return b
     }()
 
-    private let transition = PanelTransition()
+    private var child: UIViewController!
+    private var transition: PanelTransition!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        child = ChildViewController()
+        transition = PanelTransition.init(presented: child, presenting: self)
+        
+        child.transitioningDelegate = transition
+        child.modalPresentationStyle = .custom
+        
         view.backgroundColor = .green
         button.frame.size = CGSize.init(width: 100, height: 50)
         button.center = view.center
         view.addSubview(button)
     }
+    
+    override var preferredScreenEdgesDeferringSystemGestures: UIRectEdge { //отключает системный свайп снизу
+        return .bottom
+    }
+    
     @objc
     func openDidPress(){
-        let child = ChildViewController()
-        child.transitioningDelegate = transition
-        child.modalPresentationStyle = .custom
-        
         present(child, animated: true, completion: nil)
     }
 

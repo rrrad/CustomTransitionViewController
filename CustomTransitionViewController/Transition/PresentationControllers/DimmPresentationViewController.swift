@@ -56,7 +56,7 @@ class DimmPresentationViewController: PresentationController {
     
     override func dismissalTransitionDidEnd(_ completed: Bool) {
         super.dismissalTransitionDidEnd(completed)
-        if !completed {
+        if completed {
             self.dimmView.removeFromSuperview()
         }
     }

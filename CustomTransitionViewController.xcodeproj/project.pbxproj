@@ -82,6 +82,18 @@
 			path = PresentationControllers;
 			sourceTree = "<group>";
 		};
+		86722EB6245EB025002D0A86 /* Transition */ = {
+			isa = PBXGroup;
+			children = (
+				86C26D9C2459FF0D00D554C0 /* PanelTransition.swift */,
+				86BF51DD245D96080004AA46 /* TransitionDriver.swift */,
+				86BF51DF245E0B380004AA46 /* Extensions.swift */,
+				86722EB5245EADA8002D0A86 /* PresentationControllers */,
+				86722EB4245EAD69002D0A86 /* Animations */,
+			);
+			path = Transition;
+			sourceTree = "<group>";
+		};
 		86C26D7C2455D61C00D554C0 = {
 			isa = PBXGroup;
 			children = (
@@ -105,11 +117,7 @@
 				86C26D8A2455D61C00D554C0 /* SceneDelegate.swift */,
 				86C26D8C2455D61C00D554C0 /* ContentView.swift */,
 				86722EB3245EAD40002D0A86 /* ViewControllers */,
-				86722EB5245EADA8002D0A86 /* PresentationControllers */,
-				86C26D9C2459FF0D00D554C0 /* PanelTransition.swift */,
-				86BF51DD245D96080004AA46 /* TransitionDriver.swift */,
-				86BF51DF245E0B380004AA46 /* Extensions.swift */,
-				86722EB4245EAD69002D0A86 /* Animations */,
+				86722EB6245EB025002D0A86 /* Transition */,
 				86C26D8E2455D62100D554C0 /* Assets.xcassets */,
 				86C26D932455D62100D554C0 /* LaunchScreen.storyboard */,
 				86C26D962455D62100D554C0 /* Info.plist */,
