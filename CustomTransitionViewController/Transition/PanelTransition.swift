@@ -8,28 +8,49 @@
 
 import UIKit
 
+enum SidePanel{
+    case left
+    case right
+}
+
 class PanelTransition: NSObject, UIViewControllerTransitioningDelegate {
     
-    init(presented: UIViewController, presenting: UIViewController) {
-         driver.linkPresentationGesture(to: presented, presentingController: presenting) // подключение жестов
+    private var sidePanel: SidePanel
+    private let driver: TransitionDriver
+    
+    init(presented: UIViewController, presenting: UIViewController, side: SidePanel) {
+        self.sidePanel = side
+        driver = TransitionDriver(side: side) // подключение класса ответственного за интерактивное взаимодествие
+        driver.linkPresentationGesture(to: presented, presentingController: presenting) // подключение жестов
     }
     
-    private let driver = TransitionDriver() // подключение класса ответственного за интерактивное взаимодествие
+     
     
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         
         let presentationController = DimmPresentationViewController(presentedViewController: presented, presenting: presenting ?? source)
         presentationController.driver = driver // подключение класса ответственного за интерактивное взаимодествие
-
+        presentationController.sidePanel = sidePanel
         return presentationController
     }
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return PresentAnimation()
+        switch sidePanel{
+        case .right:
+            return PresentAnimationRightSide()
+        case .left:
+            return PresentAnimationLeftSide()
+        }
     }
     
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return DismissAnimation()
+        switch sidePanel{
+        case .right:
+            return DismissAnimationRightSide()
+        case .left:
+            return DismissAnimationLeftSide()
+        }
+        
     }
     //MARK: - методы относящиеся к взаимодействию во время закрытия
 

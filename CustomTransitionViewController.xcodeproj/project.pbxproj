@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8632D32A245F50B60065AA00 /* DoubleChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8632D329245F50B60065AA00 /* DoubleChildViewController.swift */; };
 		86BF51D8245D6B3C0004AA46 /* DimmPresentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BF51D7245D6B3C0004AA46 /* DimmPresentationViewController.swift */; };
-		86BF51DA245D86600004AA46 /* PresentAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BF51D9245D86600004AA46 /* PresentAnimation.swift */; };
-		86BF51DC245D8D640004AA46 /* DismissAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BF51DB245D8D640004AA46 /* DismissAnimation.swift */; };
+		86BF51DA245D86600004AA46 /* PresentAnimationRightSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BF51D9245D86600004AA46 /* PresentAnimationRightSide.swift */; };
+		86BF51DC245D8D640004AA46 /* DismissAnimationRightSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BF51DB245D8D640004AA46 /* DismissAnimationRightSide.swift */; };
 		86BF51DE245D96080004AA46 /* TransitionDriver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BF51DD245D96080004AA46 /* TransitionDriver.swift */; };
 		86BF51E0245E0B380004AA46 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BF51DF245E0B380004AA46 /* Extensions.swift */; };
 		86C26D892455D61C00D554C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C26D882455D61C00D554C0 /* AppDelegate.swift */; };
@@ -22,12 +23,15 @@
 		86C26D9F245A03B300D554C0 /* ParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C26D9E245A03B300D554C0 /* ParentViewController.swift */; };
 		86C26DA1245A046000D554C0 /* ChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C26DA0245A046000D554C0 /* ChildViewController.swift */; };
 		86C26DA3245A059F00D554C0 /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C26DA2245A059F00D554C0 /* PresentationController.swift */; };
+		86C57235245F5B9D002C0AC4 /* DismissAnimationLeftSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C57234245F5B9D002C0AC4 /* DismissAnimationLeftSide.swift */; };
+		86C57237245F5BB3002C0AC4 /* PresentAnimationLeftSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C57236245F5BB3002C0AC4 /* PresentAnimationLeftSide.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8632D329245F50B60065AA00 /* DoubleChildViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleChildViewController.swift; sourceTree = "<group>"; };
 		86BF51D7245D6B3C0004AA46 /* DimmPresentationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimmPresentationViewController.swift; sourceTree = "<group>"; };
-		86BF51D9245D86600004AA46 /* PresentAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentAnimation.swift; sourceTree = "<group>"; };
-		86BF51DB245D8D640004AA46 /* DismissAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissAnimation.swift; sourceTree = "<group>"; };
+		86BF51D9245D86600004AA46 /* PresentAnimationRightSide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentAnimationRightSide.swift; sourceTree = "<group>"; };
+		86BF51DB245D8D640004AA46 /* DismissAnimationRightSide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissAnimationRightSide.swift; sourceTree = "<group>"; };
 		86BF51DD245D96080004AA46 /* TransitionDriver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionDriver.swift; sourceTree = "<group>"; };
 		86BF51DF245E0B380004AA46 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		86C26D852455D61C00D554C0 /* CustomTransitionViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomTransitionViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -42,6 +46,8 @@
 		86C26D9E245A03B300D554C0 /* ParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentViewController.swift; sourceTree = "<group>"; };
 		86C26DA0245A046000D554C0 /* ChildViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildViewController.swift; sourceTree = "<group>"; };
 		86C26DA2245A059F00D554C0 /* PresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
+		86C57234245F5B9D002C0AC4 /* DismissAnimationLeftSide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissAnimationLeftSide.swift; sourceTree = "<group>"; };
+		86C57236245F5BB3002C0AC4 /* PresentAnimationLeftSide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentAnimationLeftSide.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +66,7 @@
 			children = (
 				86C26D9E245A03B300D554C0 /* ParentViewController.swift */,
 				86C26DA0245A046000D554C0 /* ChildViewController.swift */,
+				8632D329245F50B60065AA00 /* DoubleChildViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -67,8 +74,10 @@
 		86722EB4245EAD69002D0A86 /* Animations */ = {
 			isa = PBXGroup;
 			children = (
-				86BF51DB245D8D640004AA46 /* DismissAnimation.swift */,
-				86BF51D9245D86600004AA46 /* PresentAnimation.swift */,
+				86BF51DB245D8D640004AA46 /* DismissAnimationRightSide.swift */,
+				86C57234245F5B9D002C0AC4 /* DismissAnimationLeftSide.swift */,
+				86BF51D9245D86600004AA46 /* PresentAnimationRightSide.swift */,
+				86C57236245F5BB3002C0AC4 /* PresentAnimationLeftSide.swift */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -206,7 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				86C26D892455D61C00D554C0 /* AppDelegate.swift in Sources */,
-				86BF51DC245D8D640004AA46 /* DismissAnimation.swift in Sources */,
+				86BF51DC245D8D640004AA46 /* DismissAnimationRightSide.swift in Sources */,
 				86BF51D8245D6B3C0004AA46 /* DimmPresentationViewController.swift in Sources */,
 				86C26D9F245A03B300D554C0 /* ParentViewController.swift in Sources */,
 				86C26DA3245A059F00D554C0 /* PresentationController.swift in Sources */,
@@ -214,7 +223,10 @@
 				86C26D8D2455D61C00D554C0 /* ContentView.swift in Sources */,
 				86BF51DE245D96080004AA46 /* TransitionDriver.swift in Sources */,
 				86C26D9D2459FF0D00D554C0 /* PanelTransition.swift in Sources */,
-				86BF51DA245D86600004AA46 /* PresentAnimation.swift in Sources */,
+				86C57237245F5BB3002C0AC4 /* PresentAnimationLeftSide.swift in Sources */,
+				86BF51DA245D86600004AA46 /* PresentAnimationRightSide.swift in Sources */,
+				8632D32A245F50B60065AA00 /* DoubleChildViewController.swift in Sources */,
+				86C57235245F5B9D002C0AC4 /* DismissAnimationLeftSide.swift in Sources */,
 				86BF51E0245E0B380004AA46 /* Extensions.swift in Sources */,
 				86C26DA1245A046000D554C0 /* ChildViewController.swift in Sources */,
 			);

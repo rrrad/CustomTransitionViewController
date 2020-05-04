@@ -9,13 +9,27 @@
 import UIKit
 
 class PresentationController: UIPresentationController {
+    var sidePanel: SidePanel = .left
+    
     override var frameOfPresentedViewInContainerView: CGRect {
-        let bounds = containerView!.bounds
-        let halfWidth = bounds.width - 50
-        return CGRect.init(x: 50,
-                           y: containerView?.safeAreaInsets.top ?? 0,
-                           width: halfWidth,
-                           height: bounds.height)
+        var rect = CGRect.init(x: 0, y: 0, width: 0, height: 0)
+        
+        if sidePanel == .right {
+            let bounds = containerView!.bounds
+            let halfWidth = bounds.width - 50
+            rect = CGRect.init(x: 50,
+                               y: containerView?.safeAreaInsets.top ?? 0,
+                               width: halfWidth,
+                               height: bounds.height)
+        } else if sidePanel == .left {
+            let bounds = containerView!.bounds
+            let halfWidth = bounds.width - 50
+            rect = CGRect.init(x: 0,
+                               y: containerView?.safeAreaInsets.top ?? 0,
+                               width: halfWidth,
+                               height: bounds.height)
+        }
+        return rect
     }
     
     override func presentationTransitionWillBegin() {

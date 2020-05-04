@@ -14,7 +14,13 @@ enum TransitionDirection {
 }
 
 class TransitionDriver: UIPercentDrivenInteractiveTransition {
- 
+    var sidePanel: SidePanel
+    
+    init(side: SidePanel) {
+        self.sidePanel = side
+        super.init()
+    }
+    
     //MARK: - методы относящиеся к взаимодействию для открытия или закрытия контроллеров
     
     private var presentingController: UIViewController? // контроллер для открытия
@@ -32,7 +38,12 @@ class TransitionDriver: UIPercentDrivenInteractiveTransition {
         
         // для интерактивного открытия
         screenEdgePanRecognizer = UIScreenEdgePanGestureRecognizer.init(target: self, action: #selector(handle(recognizer:)))
-        screenEdgePanRecognizer?.edges = .right // здесь свайп который управляет показом view
+        switch sidePanel {
+        case .left:
+            screenEdgePanRecognizer?.edges = .left // здесь свайп который управляет показом view
+        case .right:
+            screenEdgePanRecognizer?.edges = .right // здесь свайп который управляет показом view
+        }
         presentingController.view.addGestureRecognizer(screenEdgePanRecognizer!)
 
     }
@@ -77,7 +88,12 @@ extension TransitionDriver {
             }
             
         case .changed:
-            update(percentComplete + r.incrementToBottom(maxTranslation: maxTranslation))
+            switch sidePanel {
+            case .left:
+                update(percentComplete - r.incrementToBottom(maxTranslation: maxTranslation))
+            case .right:
+                update(percentComplete + r.incrementToBottom(maxTranslation: maxTranslation))
+            }
             
         case .ended, .cancelled:
             if r.isProjectToDownHalf(maxTranslation: maxTranslation) {
@@ -103,14 +119,26 @@ extension TransitionDriver {
             }
             
         case .changed:
-            let increment = -r.incrementToBottom(maxTranslation: maxTranslation)
-            update(percentComplete + increment)
+            switch sidePanel {
+            case .left:
+                let increment = r.incrementToBottom(maxTranslation: maxTranslation)
+                update(percentComplete + increment)
+            case .right:
+                let increment = -r.incrementToBottom(maxTranslation: maxTranslation)
+                update(percentComplete + increment)
+            }
+                
             
         case .ended, .cancelled:
-            if r.isProjectToDownHalf(maxTranslation: maxTranslation) {
-                cancel()
-            } else {
+            if r.isProjectToDownHalf(maxTranslation: maxTranslation) && sidePanel == .left {
+                print("FINISH")
                 finish()
+            } else if !r.isProjectToDownHalf(maxTranslation: maxTranslation) && sidePanel == .right {
+                print("FINISH")
+                finish()
+            } else {
+                print("CANCEL")
+                cancel()
             }
 
            case .failed:
@@ -127,7 +155,7 @@ extension TransitionDriver {
 }
 
 private extension UIPanGestureRecognizer {
-    //MARK: - методы относящиеся к взаимодействию во время закрытия
+    //MARK: - методы расчета для взаимодействию во время закрытия и открытия
     
     func incrementToBottom(maxTranslation: CGFloat) -> CGFloat {
         let translation = self.translation(in: view).x   // 2.   здесь переключение вертикальной или горизонтальной
@@ -139,8 +167,9 @@ private extension UIPanGestureRecognizer {
     
     func isProjectToDownHalf(maxTranslation: CGFloat) -> Bool {
         let endLocation = projectedLocation(decelerationRate: .fast)
+        print("ENDLOC", endLocation.x, "MAXTRANS", maxTranslation)
         let isPresentationCompleted = endLocation.x > maxTranslation / 2 // 3.   здесь переключение вертикальной или горизонтальной
-        
+        print("isPresentationCompleted", isPresentationCompleted)
         return isPresentationCompleted
     }
 }
